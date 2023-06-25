@@ -30,7 +30,7 @@ Ensure that you have set up the MongoDB connection details in the application's 
 
 module.exports = {
 mongoURI: 'mongodb://localhost:27017/contact-app',
-};
+}; ```
  
 
 ## Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
