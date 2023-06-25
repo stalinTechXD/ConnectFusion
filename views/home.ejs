@@ -14,25 +14,32 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
 <body>
     <h1 id="heading">
         <i class="fa fa-address-book-o"></i> My Contact List </h1>
-    <div>
+    <div id=" contacts-list-container">
         <ul>
             <% for (let i of contact_List) { %>
-                <li>
-                    <p>
-                        <%= i.name %>
-                    </p>
-                    <p>
-                        <%= i.phone %>
-                    </p>
+                <li class="contact">
+                    <div class="details">
+                        <p>
+                            <%= i.name %>
+                        </p>
+                        <p>
+                            <%= i.phone %>
+                        </p>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/<%= i.phone %>">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </li>
                 <% } %>
         </ul>
     </div>
 
-    <form action="create-contact" method="Post">
+    <form id="new-contact-form" action="create-contact" method="Post">
         <input type="text" name="name" placeholder="enter name">
         <input type="number" name="phone" placeholder="enter phone number">
-        <button type="submit"> Add Contacts</button>
+        <button type="submit"> Add  </button>
     </form>
     <script type="text/javascript" src="/js/home.js"></script>
 </body>

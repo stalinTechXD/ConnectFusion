@@ -34,6 +34,10 @@ app.get('/', function(req, res) {
     });
 })
 
+app.get('/delete-contact/:phone', function(req, res) {
+    console.log(req.params);
+
+})
 
 app.post('/create-contact', function(req, res) {
     contactLIst.push({
