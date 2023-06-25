@@ -21,19 +21,10 @@ Before running the application, ensure that the following prerequisites are met:
 2. Navigate to the project directory:
 3. Install the dependencies:
 
-## Configuration
-
-Ensure that you have set up the MongoDB connection details in the application's configuration file. Modify the `config.js` file and update the MongoDB connection URL according to your setup.
-
-```javascript
-// config.js
-
-module.exports = {
-mongoURI: 'mongodb://localhost:27017/contact-app',
-}; ```
+### Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
  
 
-## Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
+
 
 
 
