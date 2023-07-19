@@ -14,15 +14,22 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
 <body>
     <h1 id="heading">
         <i class="fa fa-address-book-o"></i> My Contact List </h1>
-    <div id=" contacts-list-container">
+        <form id="new-contact-form" action="create-contact" method="Post">
+            <input id ="name-element" type="text" name="name" placeholder="enter name" required>
+            <input id ="phone-element" type="number" name="phone" placeholder="enter phone number" required>
+            <button id="button-element" type="submit"> Add  </button>
+        </form>
+
+    <div id="contacts-list-container">
+        <div class="inside-element">
         <ul>
             <% for (let i of contact_List) { %>
                 <li class="contact">
                     <div class="details">
-                        <p>
+                        <p class="con-inline">
                             <%= i.name %>
                         </p>
-                        <p>
+                        <p class="con-inline"></p>
                             <%= i.phone %>
                         </p>
                     </div>
@@ -35,12 +42,9 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
                 <% } %>
         </ul>
     </div>
+    </div>
 
-    <form id="new-contact-form" action="create-contact" method="Post">
-        <input type="text" name="name" placeholder="enter name">
-        <input type="number" name="phone" placeholder="enter phone number">
-        <button type="submit"> Add  </button>
-    </form>
+  
     <script type="text/javascript" src="/js/home.js"></script>
 </body>
 

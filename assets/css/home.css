@@ -26,3 +26,38 @@ li p {
     padding: 25px;
     padding-right: 10px;
 }
+
+#new-contact-form{
+
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-content: center;
+    border-radius: 10px;
+        
+}
+
+#name-element {
+
+    margin: 10px;
+}
+
+#phone-element{
+    margin: 10px;
+}
+
+#button-element{
+
+    margin: 10px;
+    width: 50px;
+}
+
+
+#inside-element{
+    border: 2px solid red;
+}
+
+.con-inline{
+    display: inline;
+}
