@@ -21,7 +21,12 @@ Before running the application, ensure that the following prerequisites are met:
 2. Navigate to the project directory:
 3. Install the dependencies:
 
+
 ### Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
+# Sample UI
+
+![image](https://github.com/stali1234/Tech_repo/assets/60595536/bcbd3cee-7068-464c-b59c-4b1c9dec0bcf)
+
  
 
 
