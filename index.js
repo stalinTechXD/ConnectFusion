@@ -51,13 +51,28 @@ app.get('/', function(req, res) {
 
 app.get('/delete-contact/', function(req, res) {
     // console.log(req.query); -> To verify whether it detects / captures the deletion object or not.
-    let name = req.query.name;
-    let contactIndex = contactLIst.findIndex(contact => contact.name == name);
+    //let name = req.query.name;
+    // get id from query params from URL params
+    let id = req.query.id;
+   /* let contactIndex = contactLIst.findIndex(contact => contact.name == name);
     if(contactIndex != -1){
         contactLIst.splice(contactIndex , 1);
     }
+    */
   //  console.log(contactIndex);
-    return res.redirect('back');
+
+  // find the contact in the databaase using id and delete.
+   
+  Contact.findByIdAndDelete(id)
+    .then(() => {
+        return res.redirect('back');
+    })
+    .catch(err => {
+        console.log("error in deleting an object from database:", err);
+        // Handle the error and send an appropriate response to the client
+        res.status(500).send("Error deleting the object from the database.");
+    });
+    
 })
 
 app.post('/create-contact', function(req, res) {
