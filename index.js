@@ -3,7 +3,8 @@ const path = require('path'); // path
 const port = 8000;
 
 const db = require('./config/mongoose'); // this will perform all operations.
-
+const Contact = require('./models/contact');
+const { redirect } = require('express/lib/response');
 const app = express();
 
 app.set('view engine', 'ejs'); // this wil tell us the what template engine we are using .
@@ -13,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded()); // very importa as it creates an object in body and stores the records.
 app.use(express.static('assets'))
+
 
 var contactLIst = [{
         name: "stalin",
@@ -27,6 +29,8 @@ var contactLIst = [{
         phone: 2342423,
     },
 ]
+
+
 
 app.get('/', function(req, res) {
 
@@ -48,12 +52,26 @@ app.get('/delete-contact/', function(req, res) {
 })
 
 app.post('/create-contact', function(req, res) {
+    /*
     contactLIst.push({
         name: req.body.name,
         phone: req.body.phone
     })
-    return res.redirect('/');
-})
+    */ 
+    Contact.create({
+        name: req.body.name,
+        phone: req.body.phone
+    })
+        .then(newContact => {
+            console.log("*********************", newContact);
+            res.redirect('/');
+        })
+        .catch(err => {
+            console.log("error in creating a contact:", err);
+           
+            res.status(500).send("Error creating a contact.");
+        });
+    });
 app.listen(port, function(err) {
 
     if (err) {
