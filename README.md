@@ -34,7 +34,8 @@ If you would like to contribute to this project, please keep in mind the potenti
 
 # Sample UI
 
-![image](https://github.com/stali1234/Tech_repo/assets/60595536/bcbd3cee-7068-464c-b59c-4b1c9dec0bcf)
+![image](https://github.com/stali1234/Contacts-application/assets/60595536/fdc4b1f6-48aa-4bbb-a9e5-7579867f3a57)
+
 
  
 
