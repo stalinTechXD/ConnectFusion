@@ -12,6 +12,7 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
 </head>
 
 <body>
+    <div class="main">
     <h1 id="heading">
         <i class="fa fa-address-book-o"></i> My Contact List </h1>
         <form id="new-contact-form" action="create-contact" method="Post">
@@ -29,13 +30,13 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
                         <p class="con-inline">
                             <%= i.name %>
                         </p>
-                        <p class="con-inline"></p>
+                        <p class="con-inline2">
                             <%= i.phone %>
                         </p>
                     </div>
                     <div class="delete-button">
-                        <a href="/delete-contact/<%= i.phone %>">
-                            <i class="fa fa-times"></i>
+                        <a href="/delete-contact/?name=<%= i.name %>">
+                            <i class="fa fa-window-close"></i>
                         </a>
                     </div>
                 </li>
@@ -43,6 +44,7 @@ https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
         </ul>
     </div>
     </div>
+</div>
 
   
     <script type="text/javascript" src="/js/home.js"></script>

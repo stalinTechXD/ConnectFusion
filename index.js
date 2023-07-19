@@ -9,7 +9,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 // middlerware
 
-app.use(express.urlencoded());
+app.use(express.urlencoded()); // very importa as it creates an object in body and stores the records.
 app.use(express.static('assets'))
 
 var contactLIst = [{
@@ -34,9 +34,15 @@ app.get('/', function(req, res) {
     });
 })
 
-app.get('/delete-contact/:phone', function(req, res) {
-    console.log(req.params);
-
+app.get('/delete-contact/', function(req, res) {
+    // console.log(req.query); -> To verify whether it detects / captures the deletion object or not.
+    let name = req.query.name;
+    let contactIndex = contactLIst.findIndex(contact => contact.name == name);
+    if(contactIndex != -1){
+        contactLIst.splice(contactIndex , 1);
+    }
+  //  console.log(contactIndex);
+    return res.redirect('back');
 })
 
 app.post('/create-contact', function(req, res) {
