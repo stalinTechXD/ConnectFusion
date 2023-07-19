@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path'); // path
 const port = 8000;
 
+const db = require('./config/mongoose'); // this will perform all operations.
+
 const app = express();
 
 app.set('view engine', 'ejs'); // this wil tell us the what template engine we are using .
