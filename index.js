@@ -33,7 +33,7 @@ var contactLIst = [{
 
 
 app.get('/', function(req, res) {
-
+// get
     return res.render('home', {
         title: "Contact List",
         contact_List: contactLIst
