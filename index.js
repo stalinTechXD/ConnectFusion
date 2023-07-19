@@ -33,11 +33,20 @@ var contactLIst = [{
 
 
 app.get('/', function(req, res) {
-// get
-    return res.render('home', {
-        title: "Contact List",
-        contact_List: contactLIst
+
+    Contact.find({})
+    .then(contact => {
+        return res.render('home', {
+            title: "Contact List",
+            contact_List: contact
+        });
+    })
+    .catch(err => {
+        console.log("error in retrieving the values from DB:", err);
+        
+        res.status(500).send("Error retrieving contacts from the database.");
     });
+   
 })
 
 app.get('/delete-contact/', function(req, res) {
