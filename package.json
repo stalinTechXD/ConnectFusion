@@ -1,0 +1,19 @@
+{
+  "name": "connectfusion",
+  "version": "1.0.0",
+  "description": "This is an Express.js application that serves as a contact app, allowing users to add and delete contact entries consisting of names and phone numbers. The application utilizes MongoDB as its persistent database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stalinTechXD/ConnectFusion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stalinTechXD/ConnectFusion/issues"
+  },
+  "homepage": "https://github.com/stalinTechXD/ConnectFusion#readme"
+}
