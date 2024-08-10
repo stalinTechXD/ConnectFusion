@@ -34,10 +34,11 @@ If you would like to contribute to this project, please keep in mind the potenti
 
 # Sample UI
 
-![image](https://github.com/stali1234/Contacts-application/assets/60595536/fdc4b1f6-48aa-4bbb-a9e5-7579867f3a57)
+![image](https://github.com/user-attachments/assets/de66dca0-f44c-4d27-94d4-a892304bd65a)
+
 
 # DB
-![image](https://github.com/stali1234/Contacts-application/assets/60595536/8a79d5a8-dad6-4e3b-b6e1-ef739045d9f7)
+
 
 
 
