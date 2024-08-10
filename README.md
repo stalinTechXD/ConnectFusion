@@ -38,6 +38,7 @@ If you would like to contribute to this project, please keep in mind the potenti
 
 
 # DB
+![image](https://github.com/user-attachments/assets/fb6c913c-e972-4c90-b2e8-ad5bf496e225)
 
 
 
