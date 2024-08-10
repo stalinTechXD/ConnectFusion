@@ -13,15 +13,15 @@
         <ul class="contact-list">
             <% contact.forEach(contact => { %>
                 <li class="contact-item">
-                    <p><strong>Name:</strong> <%= contact.first_name %></p>
-                    <p><strong>Phone Number:</strong> <%= contact.phone_number %></p>
+                    <p><strong>Name:</strong> <%= contact.firstname  %></p>
+                    <p><strong>Phone Number:</strong> <%= contact.phone %></p>
                     <p><strong>Address:</strong> <%= contact.address %></p>
                     <div class="actions">
                         <form action="/delete-contact" method="POST" class="action-form">
-                            <input type="hidden" name="first_name" value="<%= contact.first_name %>">
+                            <input type="hidden" name="id" value="<%= contact._id%>">
                             <button type="submit" class="delete-button">Delete</button>
                         </form>
-                        <a href="/edit-contact/<%= contact.phone_number %>" class="edit-button">Edit</a>
+                        <a href="/edit-contact/<%= contact._id%>" class="edit-button">Edit</a>
                     </div>
                 </li>
             <% }); %>

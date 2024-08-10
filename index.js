@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const db = require('./config/mongoos')
+const Contact = require('./models/contact')
 const port  = 8000;
 
 const app = express();
@@ -8,18 +10,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
-var contactLists = [
-    {
-        first_name : "stalin",
-        last_name : "s",
-        email : "stalin@gmail.com",
-        phone_number  : "324324",
-        address : "1232aed",
-        company : "Google",
-        jobtitle : "swe",
-        birthday : "22/12/1999"
-    }
-]
 
 app.get('/' , (req , res) =>{
     return res.render('form' , {
@@ -28,17 +18,29 @@ app.get('/' , (req , res) =>{
     });
 });
 
-app.post('/create-contact', (req ,res) => {
-    contactLists.push({
-        first_name : req.body.first_name,
-        phone_number : req.body.phone_number,
-        address : req.body.address
-    });
-    return res.redirect('getContacts');
-})
+app.post('/create-contact', async (req, res) => {
+    try {
 
-app.get('/getContacts' , (req ,res) => {
 
+        // Adding contact to the database using async/await
+        const newContact = await Contact.create({
+            firstname: req.body.first_name,
+            phone: req.body.phone_number,
+            address: req.body.address
+        });
+
+        console.log("New contact created:", newContact);
+        res.redirect('getContacts');
+    } catch (err) {
+        console.log("Error creating contact:", err);
+        res.status(500).send("Error creating contact");
+    }
+});
+
+
+
+app.get('/getContacts' , async (req ,res) => {
+   const contactLists = await Contact.find();
     return res.render('listContact', {
         title : "contact",
         contact : contactLists,
@@ -46,16 +48,16 @@ app.get('/getContacts' , (req ,res) => {
     })
 })
 
-app.post("/delete-contact" , (req ,res) => {
-    firstNameToDelete = req.body.first_name;
-    contactLists = contactLists.filter(contact => contact.first_name !== firstNameToDelete);
+app.post("/delete-contact" , async (req ,res) => {
+    const firstNameToDelete = req.body.id;
+    const result = await Contact.findByIdAndDelete(firstNameToDelete);
     return res.redirect('getContacts');
 })
 
-app.get('/edit-contact/:phone_number', (req, res) => {
-    const first_name= req.params.phone_number;
-    console.log(first_name);
-    const contact = contactLists.find(contact => contact.phone_number === first_name);
+app.get('/edit-contact/:_id', async (req, res) => {
+    const id= req.params._id;
+    const contactLists = await Contact.find();
+    const contact = await Contact.findById(id);
     if (contact) {
        return res.render('editform', {
             title: "Edit Contact",
@@ -68,15 +70,20 @@ app.get('/edit-contact/:phone_number', (req, res) => {
     }
 });
 
-app.post('/update-contact/:id', (req, res) => {
+app.post('/update-contact/:id', async (req, res) => {
     const id =  req.params.id;  
-    const contact = contactLists.find(contact => contact.phone_number === id);
-    console.log(contact);
-    if (contact) {
-        contact.first_name = req.body.first_name;
-        contact.phone_number = req.body.phone_number;
-        contact.address = req.body.address;
-    }
+    console.log(id);
+    console.log(req.body);
+    console.log(req.body.firstname);
+    const updatedContact = await Contact.findByIdAndUpdate(
+        id, 
+        {
+            firstname: req.body.firstname,
+            phone: req.body.phone,
+            address: req.body.address
+        },
+        { new: true } // Return the updated document
+    );
     res.redirect('/getContacts');
 });
 
