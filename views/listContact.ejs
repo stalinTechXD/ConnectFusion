@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Lists</h2>
+        <ul class="contact-list">
+            <% contact.forEach(contact => { %>
+                <li class="contact-item">
+                    <p><strong>Name:</strong> <%= contact.first_name %></p>
+                    <p><strong>Phone Number:</strong> <%= contact.phone_number %></p>
+                    <p><strong>Address:</strong> <%= contact.address %></p>
+                    <div class="actions">
+                        <form action="/delete-contact" method="POST" class="action-form">
+                            <input type="hidden" name="contact_id" value="<%= contact.id %>">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                        <a href="/edit-contact/<%= contact.id %>" class="edit-button">Edit</a>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

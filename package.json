@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/stalinTechXD/ConnectFusion/issues"
   },
-  "homepage": "https://github.com/stalinTechXD/ConnectFusion#readme"
+  "homepage": "https://github.com/stalinTechXD/ConnectFusion#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
 }
