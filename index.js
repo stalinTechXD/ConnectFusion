@@ -24,6 +24,7 @@ var contactLists = [
 app.get('/' , (req , res) =>{
     return res.render('form' , {
         title  : "contactVision Form",
+        editMode: false, 
     });
 });
 
@@ -41,18 +42,43 @@ app.get('/getContacts' , (req ,res) => {
     return res.render('listContact', {
         title : "contact",
         contact : contactLists,
+        editMode: false
     })
 })
 
 app.post("/delete-contact" , (req ,res) => {
-
-    console.log(req.body);
     firstNameToDelete = req.body.first_name;
-    console.log(firstNameToDelete);
     contactLists = contactLists.filter(contact => contact.first_name !== firstNameToDelete);
     return res.redirect('getContacts');
 })
 
+app.get('/edit-contact/:phone_number', (req, res) => {
+    const first_name= req.params.phone_number;
+    console.log(first_name);
+    const contact = contactLists.find(contact => contact.phone_number === first_name);
+    if (contact) {
+       return res.render('editform', {
+            title: "Edit Contact",
+            contact: contactLists,
+            editMode: true,
+            editContact: contact
+        });
+    } else {
+        return res.status(404).send('Contact not found');
+    }
+});
+
+app.post('/update-contact/:id', (req, res) => {
+    const id =  req.params.id;  
+    const contact = contactLists.find(contact => contact.phone_number === id);
+    console.log(contact);
+    if (contact) {
+        contact.first_name = req.body.first_name;
+        contact.phone_number = req.body.phone_number;
+        contact.address = req.body.address;
+    }
+    res.redirect('/getContacts');
+});
 
 app.listen(port , (err) => {
     if(err) 
