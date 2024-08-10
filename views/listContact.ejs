@@ -18,7 +18,7 @@
                     <p><strong>Address:</strong> <%= contact.address %></p>
                     <div class="actions">
                         <form action="/delete-contact" method="POST" class="action-form">
-                            <input type="hidden" name="contact_id" value="<%= contact.id %>">
+                            <input type="hidden" name="first_name" value="<%= contact.first_name %>">
                             <button type="submit" class="delete-button">Delete</button>
                         </form>
                         <a href="/edit-contact/<%= contact.id %>" class="edit-button">Edit</a>

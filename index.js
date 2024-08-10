@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 var contactLists = [
     {
         first_name : "stalin",
@@ -43,6 +43,16 @@ app.get('/getContacts' , (req ,res) => {
         contact : contactLists,
     })
 })
+
+app.post("/delete-contact" , (req ,res) => {
+
+    console.log(req.body);
+    firstNameToDelete = req.body.first_name;
+    console.log(firstNameToDelete);
+    contactLists = contactLists.filter(contact => contact.first_name !== firstNameToDelete);
+    return res.redirect('getContacts');
+})
+
 
 app.listen(port , (err) => {
     if(err) 
